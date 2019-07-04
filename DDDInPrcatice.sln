@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDDInPrcatice.Logic", "DDDInPrcatice.Logic\DDDInPrcatice.Logic.csproj", "{E204D9EC-D4BA-46B2-81C9-3297E62DE3DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DDDInPrcatice.Logic", "DDDInPrcatice.Logic\DDDInPrcatice.Logic.csproj", "{E204D9EC-D4BA-46B2-81C9-3297E62DE3DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDDInPrcatice.Test2", "DDDInPrcatice.Test2\DDDInPrcatice.Test2.csproj", "{84AD2C09-1F42-4680-802F-D0CAB2C4EFE0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDDInPrcatice.Test3", "DDDInPrcatice.Test3\DDDInPrcatice.Test3.csproj", "{48AEA340-84C2-4B54-BD38-AF1EA4E7446E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{E204D9EC-D4BA-46B2-81C9-3297E62DE3DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E204D9EC-D4BA-46B2-81C9-3297E62DE3DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E204D9EC-D4BA-46B2-81C9-3297E62DE3DF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{84AD2C09-1F42-4680-802F-D0CAB2C4EFE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{84AD2C09-1F42-4680-802F-D0CAB2C4EFE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{84AD2C09-1F42-4680-802F-D0CAB2C4EFE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{84AD2C09-1F42-4680-802F-D0CAB2C4EFE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48AEA340-84C2-4B54-BD38-AF1EA4E7446E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48AEA340-84C2-4B54-BD38-AF1EA4E7446E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48AEA340-84C2-4B54-BD38-AF1EA4E7446E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48AEA340-84C2-4B54-BD38-AF1EA4E7446E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

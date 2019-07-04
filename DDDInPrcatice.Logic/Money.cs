@@ -21,7 +21,7 @@ namespace DDDInPrcatice.Logic
         int _FiveDollarCount      ,
         int _TwentyDollarCount) 
         {
-            if (OneCentCount < 0
+            if (_OneCentCount < 0
                || _TenCentCount < 0
                || _QuaterCentCount < 0
                || _OneDollarCount < 0
@@ -98,9 +98,9 @@ namespace DDDInPrcatice.Logic
                 return TwentyDollarCount * 20 +
                     FiveDollarCount * 5 +
                     OneDollarCount +
-                    QuaterCentCount / 4 +
-                    TenCentCount / 10 +
-                    OneCentCount / 100;
+                    (decimal)QuaterCentCount / 4 +
+                    (decimal)TenCentCount / 10 +
+                    (decimal)OneCentCount / 100;
             }
         }
     }
