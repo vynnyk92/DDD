@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28803.352
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DDDInPrcatice.Logic", "DDDInPrcatice.Logic\DDDInPrcatice.Logic.csproj", "{E204D9EC-D4BA-46B2-81C9-3297E62DE3DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDDInPrcatice.Test3", "DDDInPrcatice.Test3\DDDInPrcatice.Test3.csproj", "{48AEA340-84C2-4B54-BD38-AF1EA4E7446E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DDDInPrcatice.Test3", "DDDInPrcatice.Test3\DDDInPrcatice.Test3.csproj", "{48AEA340-84C2-4B54-BD38-AF1EA4E7446E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

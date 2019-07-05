@@ -5,7 +5,7 @@ using System;
 
 namespace DDDInPrcatice.Test3
 {
-    public class Class1
+    public class MoneySpecs
     {
         [Fact]
         public void Sum_OF_Two_IsCorrect()
