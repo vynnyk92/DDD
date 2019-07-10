@@ -2,14 +2,12 @@
 
 namespace DDDInPrcatice.Logic
 {
-    public sealed class SnackMachine:BaseEntity
+    public class SnackMachine:BaseEntity
     {
-        public Money MoneyInside { get; private set; } = Money.None;
-        public Money MoneyInTransaction { get; private set; } = Money.None;
+        public virtual Money MoneyInside { get; protected set; } = Money.None;
+        public virtual Money MoneyInTransaction { get; protected set; } = Money.None;
 
-
-
-        public void InsertMoney(Money addMoney)
+        public virtual void InsertMoney(Money addMoney)
         {
             if (!
                 (addMoney.Equals(Money.OneCent)
@@ -23,12 +21,12 @@ namespace DDDInPrcatice.Logic
                 this.MoneyInTransaction += addMoney;
         }
 
-        public void ReturnMoney()
+        public virtual void ReturnMoney()
         {
             this.MoneyInTransaction = Money.None;
         }
 
-        public void BuySnack()
+        public virtual void BuySnack()
         {
             this.MoneyInside += this.MoneyInTransaction;
             MoneyInTransaction = Money.None;

@@ -105,5 +105,28 @@ namespace DDDInPrcatice.Test3
         }
 
 
+        [Theory]
+        [InlineData(1, 0, 0, 0, 0, 0, "¢1")]
+        [InlineData(1, 1, 1, 1, 1, 1, "$26,36")]
+        public void To_String_work_with_money_Amount(
+       int _OneCentCount,
+       int _TenCentCount,
+       int _QuaterCentCount,
+       int _OneDollarCount,
+       int _FiveDollarCount,
+       int _TwentyDollarCount,
+       string expectedString)
+        {
+
+            Money money = new Money(
+                _OneCentCount,
+                _TenCentCount,
+               _QuaterCentCount,
+               _OneDollarCount,
+               _FiveDollarCount,
+                _TwentyDollarCount);
+
+            money.ToString().Should().Be(expectedString);
+        }
     }
 }

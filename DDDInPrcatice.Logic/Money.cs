@@ -23,13 +23,18 @@ namespace DDDInPrcatice.Logic
         public int FiveDollarCount  { get; private set; }
         public int TwentyDollarCount { get; private set; }
 
+        private Money()
+        {
+
+        }
+
         public Money(
         int _OneCentCount       ,
         int _TenCentCount       ,
         int _QuaterCentCount    ,
         int _OneDollarCount     ,
         int _FiveDollarCount      ,
-        int _TwentyDollarCount) 
+        int _TwentyDollarCount) : this()
         {
             if (_OneCentCount < 0
                || _TenCentCount < 0
@@ -112,6 +117,15 @@ namespace DDDInPrcatice.Logic
                     (decimal)TenCentCount / 10 +
                     (decimal)OneCentCount / 100;
             }
+        }
+
+        public override string ToString()
+        {
+            if (Amount < 1)
+                return "¢" + (Amount * 100).ToString("0");
+
+            return "$" + Amount.ToString("0.00");
+
         }
     }
 }
