@@ -1,11 +1,26 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DDDInPrcatice.Logic
 {
-    public class SnackMachine:BaseEntity
+    public class SnackMachine : AggregateRoot
     {
-        public virtual Money MoneyInside { get; protected set; } = Money.None;
-        public virtual Money MoneyInTransaction { get; protected set; } = Money.None;
+        public virtual Money MoneyInside { get; protected set; }
+        public virtual decimal MoneyInTransaction { get; protected set; }
+        protected virtual IList<Slot> Slots { get; set; }
+
+        public SnackMachine()
+        {
+            MoneyInside = Money.None;
+            MoneyInTransaction = 0;
+            Slots = new List<Slot>
+            {
+                new Slot(this, 1),
+                new Slot(this, 2),
+                new Slot(this, 3)
+            };
+        }
 
         public virtual void InsertMoney(Money addMoney)
         {
@@ -18,19 +33,68 @@ namespace DDDInPrcatice.Logic
                 || addMoney.Equals(Money.TwentyDollar)))
                 throw new InvalidOperationException();
 
-                this.MoneyInTransaction += addMoney;
+            this.MoneyInside += addMoney;
+            this.MoneyInTransaction += addMoney.Amount;
         }
 
         public virtual void ReturnMoney()
         {
-            this.MoneyInTransaction = Money.None;
+            Money moneyToReturn = MoneyInside.Allocate(MoneyInTransaction);
+            MoneyInside -= moneyToReturn;
+
+            this.MoneyInTransaction = 0;
         }
 
-        public virtual void BuySnack()
+        public virtual string CanBuySnack(int position)
         {
-            this.MoneyInside += this.MoneyInTransaction;
-            MoneyInTransaction = Money.None;
+            SnackPile snackPile = GetSnacksPile(position);
+
+            if (snackPile.Quantity == 0)
+                return "The snack pile is empty";
+
+            if (MoneyInTransaction < snackPile.Price)
+                return "Not enough money";
+
+            if (!MoneyInside.CanAllocate(MoneyInTransaction - snackPile.Price))
+                return "Not enough change";
+
+            return string.Empty;
         }
 
+        public virtual void BuySnack(int slotPosition)
+        {
+            if (CanBuySnack(slotPosition) != string.Empty)
+                throw new InvalidOperationException();
+
+            Slot slot = GetSlot(slotPosition);
+            slot.SnackPile = slot.SnackPile.SubstractOne();
+
+            Money change = MoneyInside.Allocate(MoneyInTransaction - slot.SnackPile.Price);
+            MoneyInside -= change;
+            MoneyInTransaction = 0;
+        }
+
+        public virtual void LoadSnacks(int position, SnackPile snackPile)
+        {
+            Slot slot = GetSlot(position);
+            slot.SnackPile = snackPile;
+        }
+
+        public virtual SnackPile GetSnacksPile(int slotPosition)
+        {
+            Slot slot = GetSlot(slotPosition);
+            return slot.SnackPile;
+        }
+
+        public virtual Slot GetSlot(int slotPosition)
+        {
+            Slot slot = Slots.Single(x => x.Position == slotPosition);
+            return slot;
+        }
+
+        public void LoadMoney(Money money)
+        {
+            MoneyInside += money;
+        }
     }
 }
