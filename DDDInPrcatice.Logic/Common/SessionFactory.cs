@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
-namespace DDDInPrcatice.Logic
+namespace DDDInPrcatice.Logic.Common
 {
     public static class SessionFactory
     {

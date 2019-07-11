@@ -80,8 +80,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SnackMachineViewModel.cs" />
-    <Compile Include="SnackPileViewModel.cs" />
+    <Compile Include="SnackMachines\SnackMachineViewModel.cs" />
+    <Compile Include="SnackMachines\SnackPileViewModel.cs" />
     <Compile Include="Utils\DialogService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -135,7 +135,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="SnackMachineViewModel.xaml">
+    <Page Include="SnackMachines\SnackMachineViewModel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -157,6 +157,9 @@
       <Project>{e204d9ec-d4ba-46b2-81c9-3297e62de3df}</Project>
       <Name>DDDInPrcatice.Logic</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Atms\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

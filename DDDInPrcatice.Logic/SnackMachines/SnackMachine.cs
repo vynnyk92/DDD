@@ -1,8 +1,10 @@
-﻿using System;
+﻿using DDDInPrcatice.Logic.Common;
+using DDDInPrcatice.Logic.SharedKernel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DDDInPrcatice.Logic
+namespace DDDInPrcatice.Logic.SnackMachines
 {
     public class SnackMachine : AggregateRoot
     {

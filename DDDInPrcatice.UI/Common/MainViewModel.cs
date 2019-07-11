@@ -1,6 +1,8 @@
 ﻿using DddInPractice.Logic;
+using DddInPractice.UI.SnackMachines;
 using DDDInPrcatice.Logic;
-using DDDInPrcatice.Logic.Repositories;
+using DDDInPrcatice.Logic.Common;
+using DDDInPrcatice.Logic.SnackMachines;
 using NHibernate;
 
 namespace DddInPractice.UI.Common

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DDDInPrcatice.Logic.Repositories
+namespace DDDInPrcatice.Logic.Common
 {
     public abstract class Repository<T> where T:AggregateRoot
     {

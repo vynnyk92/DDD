@@ -3,9 +3,10 @@ using DddInPractice.UI.Common;
 using NHibernate;
 using System.Collections.Generic;
 using System.Linq;
-using DDDInPrcatice.Logic.Repositories;
+using DDDInPrcatice.Logic.SnackMachines;
+using DDDInPrcatice.Logic.SharedKernel;
 
-namespace DddInPractice.UI
+namespace DddInPractice.UI.SnackMachines
 {
     public class SnackMachineViewModel : ViewModel
     {

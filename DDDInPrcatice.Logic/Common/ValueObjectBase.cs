@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DDDInPrcatice.Logic
+namespace DDDInPrcatice.Logic.Common
 {
     public abstract class ValueObject<T>
         where T : ValueObject<T>

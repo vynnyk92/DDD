@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DDDInPrcatice.Logic
+namespace DDDInPrcatice.Logic.SnackMachines
 {
     class SlotMap : ClassMap<Slot>
     {
