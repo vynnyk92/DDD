@@ -81,6 +81,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="SnackMachineViewModel.cs" />
+    <Compile Include="SnackPileViewModel.cs" />
     <Compile Include="Utils\DialogService.cs" />
   </ItemGroup>
   <ItemGroup>

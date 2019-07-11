@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 using NHibernate;
-
+using DDDInPrcatice.Logic.Repositories;
 
 namespace DDDInPrcatice.Test3
 {
@@ -27,5 +27,14 @@ namespace DDDInPrcatice.Test3
             }
         }
 
+        [Fact]
+        public void TempTest2()
+        {
+
+            SessionFactory.Init(@"Server=GOLPE\SQLEXPRESS;Database=DDDInPrcatice;Integrated Security=true;User=test;Password=Uuxwp7Mcxo7Khy! ");
+
+            var repo = new SnackMachineRepository();
+            var machine = repo.GetById(1);
+        }
     }
 }

@@ -1,12 +1,16 @@
 ﻿using DDDInPrcatice.Logic;
 using DddInPractice.UI.Common;
 using NHibernate;
+using System.Collections.Generic;
+using System.Linq;
+using DDDInPrcatice.Logic.Repositories;
 
 namespace DddInPractice.UI
 {
     public class SnackMachineViewModel : ViewModel
     {
         private readonly SnackMachine _snackMachine;
+        private readonly SnackMachineRepository snackMachineRepository;
         private string message = "";
 
         public string Message
@@ -26,15 +30,25 @@ namespace DddInPractice.UI
         public Command InsertDollarCommand    { get; private set; }
         public Command InsertFiveDollarCommand   { get; private set; }
         public Command InsertTwentyDollarCommand { get; private set; }
-        public Command BuySnackCommand { get; private set; }
+        public Command<string> BuySnackCommand { get; private set; }
 
 
         public Command ReturnMoneyCommand { get; private set; }
 
 
+        public IReadOnlyList<SnackPileViewModel> Piles
+        {
+            get
+            {
+                return _snackMachine.GetAllSnackPiles().Select(x => new SnackPileViewModel(x)).ToList();
+            }
+        }
+
         public SnackMachineViewModel(SnackMachine snackMachine)
         {
             this._snackMachine = snackMachine;
+            snackMachineRepository = new SnackMachineRepository();
+
 
             InsertCentCommand = new Command(() => InsertMoney(Money.OneCent));
             InsertTenCentCommand        = new Command(() => InsertMoney(Money.TenCent));
@@ -43,23 +57,25 @@ namespace DddInPractice.UI
             InsertFiveDollarCommand     = new Command(() => InsertMoney(Money.FiveDollar));
             InsertTwentyDollarCommand = new Command(() => InsertMoney(Money.TwentyDollar));
             ReturnMoneyCommand = new Command(() => ReturnMoney());
-            BuySnackCommand = new Command(() => BuySnack());
+            BuySnackCommand = new Command<string>(BuySnack);
 
         }
 
-        private void BuySnack()
+        private void BuySnack(string position)
         {
-            _snackMachine.BuySnack();
-            using (ISession session = SessionFactory.OpenSession())
+            string error = _snackMachine.CanBuySnack(int.Parse(position));
+            if (!string.IsNullOrEmpty(error))
             {
-                using (ITransaction transaction = session.BeginTransaction())
-                {
-                    session.SaveOrUpdate(_snackMachine);
-                    transaction.Commit();
-                }
+
+                NotifyClient(error);
             }
+            else
+            {
+                _snackMachine.BuySnack(int.Parse(position));
+                snackMachineRepository.Save(_snackMachine);
 
                 NotifyClient("You've bought a snack.");
+            }
         }
 
         private void InsertMoney(Money coinOrNote)

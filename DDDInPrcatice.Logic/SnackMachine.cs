@@ -92,9 +92,14 @@ namespace DDDInPrcatice.Logic
             return slot;
         }
 
-        public void LoadMoney(Money money)
+        public virtual void LoadMoney(Money money)
         {
             MoneyInside += money;
+        }
+
+        public virtual IReadOnlyList<SnackPile> GetAllSnackPiles()
+        {
+            return Slots.OrderBy(x => x.Position).Select(x => x.SnackPile).ToList();
         }
     }
 }

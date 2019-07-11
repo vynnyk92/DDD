@@ -16,7 +16,7 @@ namespace DDDInPrcatice.Test3
         )
         {
             Action action = () => new SnackPile(
-                new Snack("Test"),
+               Snack.Chocolate,
                quantity,
                 price);
 

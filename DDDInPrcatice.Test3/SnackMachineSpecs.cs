@@ -61,7 +61,7 @@ namespace DDDInPrcatice.Test3
         public void BuySnack_trades_inserted_money_for_a_snack()
         {
             var snackMachine = new SnackMachine();
-            snackMachine.LoadSnacks(1, new SnackPile(new Snack("Chips"), 10, 1m));
+            snackMachine.LoadSnacks(1, new SnackPile(Snack.Chocolate, 10, 1m));
             snackMachine.InsertMoney(Money.OneDollar);
             snackMachine.InsertMoney(Money.OneDollar);
 
@@ -76,7 +76,7 @@ namespace DDDInPrcatice.Test3
         public void CanNot_BuySnack_when_There_is_no_snacks()
         {
             var snackMachine = new SnackMachine();
-            snackMachine.LoadSnacks(1, new SnackPile(new Snack("Chips"), 0, 1m));
+            snackMachine.LoadSnacks(1, new SnackPile(Snack.Chocolate, 0, 1m));
             snackMachine.InsertMoney(Money.OneDollar);
             snackMachine.InsertMoney(Money.OneDollar);
 
@@ -90,7 +90,7 @@ namespace DDDInPrcatice.Test3
         public void CanNot_BuySnack_If_NotEnought_Money()
         {
             var snackMachine = new SnackMachine();
-            snackMachine.LoadSnacks(1, new SnackPile(new Snack("Chips"), 1, 2m));
+            snackMachine.LoadSnacks(1, new SnackPile(Snack.Chocolate, 1, 2m));
             snackMachine.InsertMoney(Money.OneDollar);
 
             Action action = () => snackMachine.BuySnack(1);
